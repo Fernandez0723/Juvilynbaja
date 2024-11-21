@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"  type="image/png" href="images/developer1.jpg">
+    <title>Welcome to Lamborghini</title>
+    <style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    background-color: #000000;
+    line-height: 1.6;
+}
+
+/* Header Section */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #000000, #0c0c0c, #262626);
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header img {
+    height: 60px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffd700;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url('images/background1.jpg') no-repeat center center/cover;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero h1 {
+    position: relative;
+    font-size: 4rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    position: relative;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.hero a {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 30px;
+    background: #ffd700;
+    color: #000000;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.hero a:hover {
+    background: #b8860b;
+}
+
+/* Section Styles */
+section {
+    padding: 250px 100px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.2rem;
+    color: #d4d4d4;
+    margin-bottom: 40px;
+}
+
+/* kani dri ka butang sa mga background image mo kada section */
+/* About Section Background */
+#about {
+    background: url('images/background2.jpg') no-repeat center center/cover;
+}
+
+/* Models Section Background */
+#models {
+    background: url('images/background3.jpg') no-repeat center center/cover;
+}
+
+/* Features Section Background */
+#features {
+    background: url('images/background5.jpg') no-repeat center center/cover;
+}
+
+/* Developer Section Background */
+#developer {
+    background: url('developer-background.jpg') no-repeat center center/cover;
+}
+
+.features {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.feature-box {
+    background: #1a1a1a; 
+    border-radius: 15px; 
+    padding: 20px;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    flex: 1;
+    margin-bottom: 30px;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6); 
+}
+
+.feature-box img {
+    width: 140px; 
+    height: 140px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5); 
+    border: 3px solid #ffd700; 
+}
+
+.feature-box h3 {
+    font-size: 1.6rem;
+    color: #ffd700; 
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 1px; 
+}
+
+.feature-box p {
+    color: #e0e0e0; 
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* Optional Animation for Image */
+.feature-box img {
+    transition: transform 0.3s ease; 
+}
+
+.feature-box img:hover {
+    transform: scale(1.1); 
+}
+
+/* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1050; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); 
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%; 
+    max-height: 90%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ffd700;
+}
+
+
+
+/* Developer Section */
+.developer-profile {
+    background: linear-gradient(to right, #111111, #0c0c0c);
+    color: #ffffff;
+    padding: 80px 100px;
+    text-align: center;
+}
+
+.developer-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.developer-box {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.developer-box img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #ffd700;
+}
+
+.developer-box h3 {
+    font-size: 1.5rem;
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.developer-box p {
+    color: #d4d4d4;
+    font-size: 1rem;
+}
+
+.developer-link {
+    color: #FFD700; 
+    text-decoration: none; 
+}
+
+.developer-link:hover {
+    color: #FFCC00; 
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #0c0c0c;
+    padding: 40px 0;
+    color: #ffffff;
+    margin-top: 40px;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="images/logo-removebg-preview.png" alt="Lamborghini Logo">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#models">Models</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#developer">Developer</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div id="home" class="hero">
+        <div>
+            <h1>Experience Pure Elegance</h1>
+            <p>The pinnacle of automotive luxury and performance.</p>
+            <a href="#models">Explore Models</a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Lamborghini</h2>
+        <p>
+            Founded in 1963, Lamborghini is known for crafting some of the most iconic supercars in history.
+            Combining cutting-edge engineering with bold Italian design, every Lamborghini is a masterpiece of speed and luxury.
+        </p>
+    </section>
+
+    <!-- Models Section -->
+    <section id="models">
+        <h2>Our Models</h2>
+        <div class="features">
+            <div class="feature-box">
+                <img src="images/background3.jpg" alt="Aventador">
+                <h3>Aventador</h3>
+                <p>The ultimate V12 supercar with unmatched power and presence.</p>
+            </div>
+            <div class="feature-box">
+                <img src="images/background3.jpg" alt="Huracan">
+                <h3>Huracan</h3>
+                <p>A blend of innovation and pure driving emotion.</p>
+            </div>
+            <div class="feature-box">
+                <img src="images/background3.jpg" alt="Urus">
+                <h3>Urus</h3>
+                <p>The world’s first Super SUV that redefines versatility.</p>
+            </div>
+            <div class="feature-box">
+                <img src="images/background3.jpg" alt="Sián">
+                <h3>Sián</h3>
+                <p>The first hybrid supercar from Lamborghini, a perfect blend of performance and sustainability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <h2>Our Key Features</h2>
+        <p>Explore the groundbreaking features that make Lamborghini stand out in the world of automotive excellence.</p>
+        <div class="features">
+            <div class="feature-box">
+                <img src="images/background4.jpg" alt="Carbon Fiber">
+                <h3>Carbon Fiber</h3>
+                <p>High-performance lightweight carbon fiber used in key structural components for superior handling and speed.</p>
+            </div>
+            <div class="feature-box">
+                <img src="images/background4.jpg" alt="Aerodynamics">
+                <h3>Aerodynamics</h3>
+                <p>Advanced aerodynamic design ensures exceptional stability at high speeds and improved fuel efficiency.</p>
+            </div>
+            <div class="feature-box">
+                <img src="images/background4.jpg" alt="Powerful Engine">
+                <h3>Powerful Engine</h3>
+                <p>Engineered to deliver unparalleled performance, from V10s to V12s.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="developer" class="developer-profile">
+        <h2>Meet the Developer</h2>
+        <div class="developer-container">
+            <div class="developer-box">
+                <img class="developer-img" src="images/developer1.jpg" alt="Developer">
+                <h3><a href="https://www.facebook.com/juvilyn.baja.1" target="_blank" class="developer-link">Juvilyn Baja</a></h3>
+                <p>Web Developer & Designer. Passionate about creating immersive user experiences and stunning visuals.</p>
+            </div>
+            <div class="developer-box">
+                <img class="developer-img" src="images/developer2.jpg" alt="Developer">
+                <h3><a href="https://www.facebook.com/profile.php?id=61562896390812" target="_blank" class="developer-link">Jelrose Dulaogon</a></h3>
+                <p>Web Developer & Designer. Passionate about creating immersive user experiences and stunning visuals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <p>&copy; 2024 Lamborghini. All rights reserved.</p>
+        <p>For inquiries, please <a href="https://www.facebook.com/juvilyn.baja.1">contact us</a>.</p>
+    </footer>
+
+    <!-- Image Modal -->
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+   // Get modal elements
+const modal = document.getElementById("imageModal");
+const modalImage = document.getElementById("modalImage");
+const closeModal = document.querySelector(".close");
+
+// Add click event to all feature-box images
+document.querySelectorAll(".feature-box img").forEach(image => {
+    image.addEventListener("click", () => {
+        modal.style.display = "flex"; 
+        modalImage.src = image.src; 
+    });
+});
+
+// Add click event to all developer images
+document.querySelectorAll(".developer-img").forEach(image => {
+    image.addEventListener("click", () => {
+        modal.style.display = "flex"; 
+        modalImage.src = image.src; 
+    });
+});
+
+// Close the modal when the 'x' is clicked
+closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Close the modal when clicking outside the image
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+// Smooth scrolling when navigation links are clicked
+document.querySelectorAll('nav ul li a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        window.scrollTo({
+            top: targetElement.offsetTop - 70, 
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Optional: Change header style when scrolling
+window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
+    if (window.scrollY > 50) {
+        header.style.background = "#111111"; 
+        header.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.5)"; 
+    } else {
+        header.style.background = "linear-gradient(to right, #000000, #0c0c0c, #262626)";
+        header.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.3)";
+    }
+});
+
+
+</script>
+
+
+
+
+</body>
+</html>
